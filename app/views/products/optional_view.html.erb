@@ -1,0 +1,79 @@
+For Admin
+<div class="album text-muted">
+   <div class="container">
+      <div class="row">
+         <% @products.each do |product| %>
+         <div class="card">
+            <%= image_tag product.picture_url, width: '20%' if product.picture? %><br>
+           <p><strong>Name:-</strong><%= product.name %></p>
+            <p><strong>Price:-</strong><%= product.price %></p>
+            
+         </div>
+         <% end %>
+      </div>
+     
+   </div>
+</div>
+
+_________________________________________________________
+ for User
+
+ <!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style>
+    th, td {border: 2px solid blue; 
+              border-collapse: collapse;s
+
+    }
+  </style>
+</head>
+<body>
+<center>
+<h1> Products </h1>
+</center>
+<center>
+<table style="padding: 2px; text-align: center; 
+              width: 100%; border: 2px solid blue; 
+              border-collapse: collapse;">
+
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Picture</th>
+      <th>Edit Details</th>
+   </tr>
+  </thead>
+
+  <tbody>
+     <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td><%= product.price %></td>
+        <td><%= image_tag product.picture_url, width: '100%' if product.picture? %></td>
+        <td><%= link_to 'show', product_path(product) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+ </table>
+
+<br>
+
+</center>
+
+
+</body>
+</html>
+
+
+
+
+
+<p>
+      <strong>Comment By:</strong>
+      <%= current_user.email %>
+    </p>

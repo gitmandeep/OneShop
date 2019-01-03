@@ -1,0 +1,16 @@
+<center>
+  <h2>Add Category</h2>
+</center><hr>
+<%= render 'category_error' %>
+<%= form_with scope: :category, url: categories_path, method: :POST, local: true do |form| %>
+  <p>
+    <%= form.label :name %> <br/>
+    <%= form.text_field :name %>
+  </p><br/>
+  <p>
+    <%= form.submit %>
+  </p>
+    
+<% end %>
+<%= link_to 'Back', products_url %> |
+<%= link_to 'List of Category', categories_path %>

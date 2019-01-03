@@ -1,0 +1,19 @@
+<% @products.each do |product| %>
+  <div class="col-xs-4 col-xs-offset-0 col-lg-4 col-lg-offset-0">
+    <div class="product_img img-responsive">
+      <%= image_tag product.picture_url, width: '200px',
+      height: '250px'%>
+    </div>
+    <div class="product_name">
+      <h4><%= product.name %></h4>
+    </div>    
+    <div class="price_line">
+      <h4 class="price"> ₹ <%=product.price%></h4>
+    </div>
+      <%= link_to 'Show More', product_path(product), class: "btn btn-link" %> |<%= link_to 'Add to Cart', product_path(product), class: "btn btn-link" %> 
+  </div>
+<%end%>
+<center>
+  <%= paginate @products, window: 2 %><br>
+  <h5><%= page_entries_info @products, entry_name: 'item' %></h5>
+</center>

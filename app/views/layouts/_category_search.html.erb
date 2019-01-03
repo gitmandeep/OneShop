@@ -1,0 +1,34 @@
+<% if user_signed_in? && (current_user.role == "Admin") %>
+  <h3 align="left"><strong>Welcome Admin</strong></h3>
+    <div class="col-lg-3">
+      <div class="well sidebar-nav ">
+        <ul class="nav nav-list">
+          <li class="nav-header"></li>
+          <li><%= link_to 'Add New Product', new_product_path %></li>
+          <li><%= link_to 'Add New Category', category_new_path %></li>
+        </ul>
+      </div>
+    </div>
+      <% elsif user_signed_in? && current_user.role != "Admin"%>
+        <div class="col-lg-3">
+          <div class="well sidebar-nav ">
+            <ul class="nav nav-list">
+              <li class="nav-header"></li>
+              <li><%= link_to "All Product", products_userview_path  %></li>
+              <li><%= link_to "Product Category", "#"  %></li>
+                <ul>
+                  <% @categories.each do |c| %>
+                    <li><%= link_to  c.name, by_category_products_path(category_id: c.id)  %></li>
+                    <%end%>
+                </ul>
+              <li><%= link_to "How to Order", "/"  %></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+      <% else %>
+      <% end -%>
+
+<%= render '/layouts/category_search' %>
+
+  
+      

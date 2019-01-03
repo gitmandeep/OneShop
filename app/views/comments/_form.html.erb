@@ -1,0 +1,16 @@
+<%= form_with(model: [@product, @comment], local: true) do |form| %>
+  <div>
+    <p>
+      <%= form.label :your_comment %><br>
+      <%= form.text_area :your_comment, rows: 7, cols:30 %>
+    </p>
+    <p>
+      <%= form.label :comment_by %><br>
+      <%= form.text_field :comment_by, :value => current_user.email, :readonly => true %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  </div>  
+<% end %>
+  

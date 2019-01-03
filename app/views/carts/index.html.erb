@@ -1,0 +1,23 @@
+ <table id="line_items">
+   <tr>
+     <th>Product</th>
+     <th>Qty</th>
+     <th class="price">Unit Price</th>
+     <th class="price">Full Price</th>
+   </tr>
+
+  <% for item in @cart.items %>
+    <!-- <tr class="<%= #cycle :odd, :even %>"> -->
+       <td><%=h item.product.name %></td>
+       <td class="qty"><%= item.quantity %></td>
+       <td class="price"><%= gbp(item.unit_price) %></td>
+       <td class="price"><%= gbp(item.full_price) %></td>
+    </tr>
+   <% end %>
+ <tr>
+
+  <td class="total price" colspan="4">
+    Total: <%= gbp(@cart.total_price) %>
+  </td>
+  </tr>
+  </table>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+    <style>
+      th, td {border: 2px solid blue; 
+              border-collapse: collapse;}
+    </style>
+</head>
+<body>
+  <center>
+    <h1> Product Catogery </h1>
+  </center>
+  <table style="padding: 2px; text-align: center; 
+            width: 100%; border: 2px solid blue; 
+            border-collapse: collapse;">
+
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Edit Details</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @categories.each do |catogery| %>
+        <tr>
+          <td><%= catogery.name %></td>
+          <td><%= link_to 'Destroy', category_path(catogery.id), method: :delete, data: { confirm:'Are you sure?' } %></td> 
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</body>
+</html>
