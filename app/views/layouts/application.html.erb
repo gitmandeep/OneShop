@@ -49,7 +49,7 @@
               <li><%= link_to "All Product", products_userview_path  %></li>
               <li><%= link_to "Product Category", "#"  %></li>
                 <ul>
-                  <% @categories.each do |c| %>
+                  <% all_categories.each do |c| %>
                     <li><%= link_to  c.name, by_category_products_path(category_id: c.id)  %></li>
                   <%end%>
                 </ul>

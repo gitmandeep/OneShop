@@ -6,7 +6,15 @@ Rails.application.routes.draw do
   get 'products/redirect_after_sign_in', to: 'products#redirect_after_sign_in'
   get 'products/check_role', to: 'products#check_role'
   
-  resources :carts
+  resources :carts, only: [:show] do
+    collection do
+      get :add_to_cart
+      get :reduce_quantity
+      get :increase_quantity
+      get :remove_item_from_cart
+    end
+  end
+
   resources :products do
     resources :comments
     collection do

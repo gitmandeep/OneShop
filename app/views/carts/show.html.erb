@@ -1,0 +1,20 @@
+<% @cart.carts_products.each do |cart_product| %>
+  <% product = cart_product.product %>
+  <div class="col-xs-6 col-xs-offset-0 col-lg-6 col-lg-offset-0">
+    <div>
+      <%= image_tag product.picture_url, width: '200px',
+      height: '250px'%>
+    </div>
+    <div>
+      <h4>Tiltle: <%= product.name %> | Unit Price: ₹ <%=product.price%></h4> 
+    </div>    
+    <div>
+      <h4>Quantity: <%= link_to '-', reduce_quantity_carts_path(product_id: product.id), class: "btn btn-success btn-xs"%>  <b><%= cart_product.quantity %></b>  <%= link_to '+', increase_quantity_carts_path(product_id: product.id),class: "btn btn-success btn-xs"%> | Total Price: ₹ <%=product.price.to_i*cart_product.quantity.to_i %></h4>
+    </div>
+    <div>
+      <%= link_to 'Remove item', remove_item_from_cart_carts_path(product_id: product.id), class: "btn btn-success btn-sm"%>
+
+    </div>
+    <hr>
+  </div>
+<%end%>

@@ -1,10 +1,13 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+  helper_method :all_categories
+
+  def all_categories
+    Category.all  
+  end
   
   def category
-    @categories = Category.all  
     @category  = Category.find(params[:category_id])
   end
 
