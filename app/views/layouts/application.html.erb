@@ -46,6 +46,9 @@
           <div class="well sidebar-nav ">
             <ul class="nav nav-list">
               <li class="nav-header"></li>
+                <% if current_user.cart %>
+                  <li><%= link_to "My Cart", cart_path(current_user.cart)  %></li>
+                <%end%>
               <li><%= link_to "All Product", products_userview_path  %></li>
               <li><%= link_to "Product Category", "#"  %></li>
                 <ul>

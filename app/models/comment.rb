@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
-  belongs_to :product
-  belongs_to :user, required: false
+  belongs_to :product, dependent: :destroy
+  belongs_to :user, dependent: :destroy, required: false
 
   validates :your_comment, format: {with: /\A[a-zA-Z]+\z/, message:"only letters allow"}, presence:true
 

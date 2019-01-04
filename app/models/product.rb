@@ -3,7 +3,7 @@ class Product < ApplicationRecord
 
   paginates_per 9
 
-  belongs_to :category
+  belongs_to :category, dependent: :destroy
 
   has_many :comments
   has_many :carts_products

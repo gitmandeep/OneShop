@@ -4,11 +4,14 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :dob, :email, :mobile, presence: true
   
+  after_create :assign_cart
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
 
+  
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -27,4 +30,11 @@ class User < ApplicationRecord
       end
     end
   end
+
+  private
+
+  def assign_cart
+    create_cart
+  end
+
 end
