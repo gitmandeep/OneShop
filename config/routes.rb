@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   resources :carts, only: [:show] do
     collection do
       get :add_to_cart
-      get :reduce_quantity
-      get :increase_quantity
+      get :iterate_quantity
       get :remove_item_from_cart
     end
   end

@@ -9,8 +9,12 @@
     <div>
       <h4>Tiltle: <%= product.name %> | Unit Price: ₹ <%=product.price%></h4> 
     </div>    
-    <div>
-      <h4>Quantity: <%= link_to '-', reduce_quantity_carts_path(product_id: product.id), class: "btn btn-success btn-xs"%>  <b><%= cart_product.quantity %></b>  <%= link_to '+', increase_quantity_carts_path(product_id: product.id),class: "btn btn-success btn-xs"%> | Total Price: ₹ <%=product.price.to_i*cart_product.quantity.to_i %></h4>
+    <div class="">
+      <h4>
+        Quantity: <%= link_to '-', iterate_quantity_carts_path(product_id: product.id, reduce: true),remote: true, class: "btn btn-primary btn-xs"%>
+        <b class="product-quantity-<%= product.id %>"><%= cart_product.quantity %></b>
+        <%= link_to '+', iterate_quantity_carts_path(product_id: product.id),remote: true, class: "btn btn-primary btn-xs"%> | Total Price: <span class="product-price-<%= product.id %>">₹ <%=product.price.to_i*cart_product.quantity.to_i %></span>
+      </h4>
     </div>
     <div>
       <%= link_to 'Remove item', remove_item_from_cart_carts_path(product_id: product.id), class: "btn btn-success btn-sm"%>

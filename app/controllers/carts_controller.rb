@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
  
   before_action :check_cart_available, only: [:add_to_cart]
-  before_action :find_cart_product, only: [:reduce_quantity, :increase_quantity, :remove_item_from_cart]
+  before_action :find_cart_product, only: [:iterate_quantity, :remove_item_from_cart]
 
   def add_to_cart
     cp = CartsProduct.find_or_initialize_by(product_id: params[:product_id], cart_id: current_user.cart.id)
@@ -13,23 +13,20 @@ class CartsController < ApplicationController
     @cart = current_user.cart
   end
   
-  def reduce_quantity
-    @cart_product.update(quantity: @cart_product.quantity - 1)
-    if @cart_product.quantity > 0
-      redirect_to cart_path(current_user.cart)
+  def iterate_quantity
+    if params[:reduce]
+      @cart_product.update(quantity: @cart_product.quantity - 1)
+        unless @cart_product.quantity > 0
+          @cart_object_removed = true if @cart_product.destroy
+        end
     else
-      remove_item_from_cart
+      @cart_product.update(quantity: @cart_product.quantity + 1)  
     end
   end
 
-  def increase_quantity 
-    @cart_product.update(quantity: @cart_product.quantity + 1)
-    redirect_to cart_path(current_user.cart)
-  end 
-
   def remove_item_from_cart
-   @cart_product.destroy
-   redirect_to cart_path(current_user.cart)
+    @cart_product.destroy
+    redirect_to cart_path(current_user.cart)
   end   
 
   private
