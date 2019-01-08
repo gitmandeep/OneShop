@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "One" %></title>
     <%= csrf_meta_tags %>
-
+    
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
   </head>
@@ -17,11 +17,12 @@
         <% if user_signed_in? %>
           <ul class="nav navbar-nav navbar-right">
             <ul class="dropdown">
-              <button class="btn btn-primary dropdown-toggle" type="button"data-toggle="dropdown">Log Out
+              <button class="btn btn-primary dropdown-toggle" type="button"data-toggle="dropdown">Welcome! <%= current_user.first_name %>
               <span class="caret"></span></button>
                 <ul class="dropdown-menu">
+                  <li><%= link_to 'My profile', edit_user_registration_path %> </li>
                   <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-                  <li><%= link_to 'Edit profile', edit_user_registration_path %> </li>
+                  
                 </ul>
             </ul>
          </ul>
