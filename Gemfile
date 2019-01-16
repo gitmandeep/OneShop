@@ -13,6 +13,7 @@ gem 'carrierwave'
 gem 'omniauth-facebook'
 gem 'twitter-bootstrap-rails'
 gem 'kaminari'
+gem 'twilio-ruby'
 
 # gem 'rails-js'
 
