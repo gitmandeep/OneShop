@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     @comment = @product.comments.build(comment_params)
     set_user
     if @comment.save
-      redirect_to product_url(@product)
+      # redirect_to product_url(@product)
     else
       render 'new'
     end
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
   def update
     @comment = @product.comments.find(params[:id])
     if @comment.update(comment_params)
-      redirect_to product_url(@product) 
+      # redirect_to product_url(@product) 
     else
       render 'edit'
     end
@@ -37,8 +37,10 @@ class CommentsController < ApplicationController
   def destroy
     @product = Product.find(params[:product_id])
     @comment = @product.comments.find(params[:id])
-    @comment.destroy
-    redirect_to product_url(@product)
+    @comment_id = @comment.id
+    if @comment.destroy
+    end
+    #redirect_to product_url(@product)
   end
   
   private

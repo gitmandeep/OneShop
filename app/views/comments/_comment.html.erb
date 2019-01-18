@@ -1,15 +1,12 @@
-<% @product.comments.each do |comment| %>
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.your_comment %>
-  </p>
- 
-  <p>
-    <strong>Comment By:</strong>
-    <%= comment.comment_by %>
-  </p>
-  <%= link_to 'Edit Comment', edit_product_comment_path(@product, comment)%> |
-  <%= link_to 'Delete comment',product_comment_path(@product, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
-  <hr>
-<% end %>
- 
+<p>
+  <strong>Comment:</strong>
+  <%= comment.your_comment %>
+</p>
+
+<p>
+  <strong>Comment By:</strong>
+  <%= comment.comment_by %>
+</p>
+<%= link_to 'Edit', edit_product_comment_path(@product, comment)%> |
+<%= link_to 'Delete',product_comment_path(@product, comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+<hr>

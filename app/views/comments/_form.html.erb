@@ -1,4 +1,5 @@
-<%= form_with(model: [@product, @comment], local: true) do |form| %>
+<%= form_with(model: [@product, @comment], remote: true) do |form| %>
+  <%= render 'comments/comment_error' %>
   <div>
     <p>
       <%= form.label :your_comment %><br>

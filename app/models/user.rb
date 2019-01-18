@@ -40,8 +40,8 @@
   end
 
   def send_msg
-    client = Twilio::REST::Client.new('ACb2ad07724169ab5a936792cab72db14c', 'c36f5a2288b4ff5bacce781ed0519d2f')
-    client.api.account.messages.create(
+    #client = Twilio::REST::Client.new('ACb2ad07724169ab5a936792cab72db14c', 'c36f5a2288b4ff5bacce781ed0519d2f')
+    $client.api.account.messages.create(
     from: '+18476968891',
     to: '+917987392544',
     body: 'Hey there! You are Successfully Login in OneShop.'

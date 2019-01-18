@@ -1,35 +1,30 @@
 <h5>Product Details</h5>
-    <div>
-    <%= image_tag @product.picture_url, width: '150', height:'200px'%>
-  </div>
-  <div>
-    <p><strong>Name:-</strong><%= @product.name %></p>
-  </div>
-  <div>         
-    <p><strong>Price:-</strong><%= @product.price %></p>
-  </div>
-  <div>         
-    <p><strong>Descriptioin:-</strong><%= @product.description %></p>
-  </div><br>
-  <div>
-    <h4>User Comments:</h4>
-      <% @product.comments.each do |comment| %>
-        <p>
-          <strong>Comment:</strong>
-          <%= comment.your_comment %>
-        </p>
-       
-        <p>
-          <strong>Comment By:</strong>
-          <%= comment.comment_by %>
-        </p>
-          <% if current_user.id == comment.user_id %>
-            <%= link_to 'Edit Comment', edit_product_comment_path(@product, comment)%> |
-            <%= link_to 'Delete comment',product_comment_path(@product, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% elsif current_user.role == "Admin" %>
-            <%= link_to 'Delete comment',product_comment_path(@product, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
-          <%end%>
-        <hr>
-      <% end %>
-        <p><strong><%= link_to "Add Comment", new_product_comment_url(@product) %></strong> </p>
-  </div>
+<div>
+  <%= image_tag @product.picture_url, width: '150', height:'200px'%>
+</div>
+<div>
+  <p><strong>Name:-</strong><%= @product.name %></p>
+</div>
+<div>         
+  <p><strong>Price:-</strong><%= @product.price %></p>
+</div>
+<div>         
+  <p><strong>Descriptioin:-</strong><%= @product.description %></p>
+</div><br>
+
+<div class=all-comments>
+  <h4>User Comments:</h4>
+  <% @comments.each do |comment| %>
+    <% if comment.id %>
+      <div class="comment-no-<%= comment.id %>">
+        <%= render partial: 'comments/comment', locals: {comment: comment } %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="user-comment">
+  <%= render 'comments/form' %>
+</div>
+
+<!-- <p><strong><%#= link_to "Add Comment", new_product_comment_url(@product), remote: true, class: "btn btn-success btn-sm"   %></strong> </p> -->
