@@ -10,7 +10,7 @@
     <div class="price_line">
       <h4 class="price"> ₹ <%=product.price%></h4>
     </div>
-      <%= link_to 'Show More', product_path(product), class: "btn btn-link" %> |<%= link_to 'Add to Cart', add_to_cart_carts_path(product_id: product.id), class: "btn btn-link" %> 
+    <%= link_to 'Show More', product_path(product), class: "btn btn-link" %> |<%= link_to 'Add to Cart', add_to_cart_carts_path(product_id: product.id), class: "btn btn-link" %> 
   </div>
 <%end%>
 <center>

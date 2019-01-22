@@ -1,16 +1,17 @@
-<p>
-  <strong>Comment:</strong>
-    <%= comment.your_comment %>
-</p>
- 
-<p>
-  <strong>Comment By:</strong>
-  <%= comment.comment_by %>
-</p>
-<% if current_user.id == comment.user_id %>
-  <%= link_to 'Edit', edit_product_comment_path(@product, comment), remote: true%> |
-  <%= link_to 'Delete',product_comment_path(@product, comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
-<% elsif current_user.role == "Admin" %>
-  <%= link_to 'Delete',product_comment_path(@product, comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
-<% end%>
-<hr>
+<div class="comment-no-<%= comment. id %>">
+  <p>
+    <strong>Comment:</strong>
+      <%= comment.your_comment %>
+  </p>
+  <p>
+    <strong>Comment By:</strong>
+    <%= comment.comment_by %>
+  </p>
+  <% if current_user.id == comment.user_id %>
+    <%= link_to 'Edit', edit_product_comment_path(@product, comment), remote: true%> |
+    <%= link_to 'Delete',product_comment_path(@product, comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+  <% elsif current_user.role == "Admin" %>
+    <%= link_to 'Delete',product_comment_path(@product, comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+  <% end%>
+  <hr>
+</div>

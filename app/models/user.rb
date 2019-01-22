@@ -1,4 +1,4 @@
-  class User < ApplicationRecord
+class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one  :cart, dependent: :destroy
 

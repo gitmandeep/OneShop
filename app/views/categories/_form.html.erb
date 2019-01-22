@@ -2,7 +2,7 @@
 <%= form_with scope: :category, url: categories_path, method: :POST, remote: true do |form| %>
   <p>
     <%= form.label :name %> <br/>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "cat-text" %>
   </p><br/>
   <p>
     <%= form.submit %>

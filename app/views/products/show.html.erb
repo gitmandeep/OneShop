@@ -1,28 +1,25 @@
 <h5>Product Details</h5>
 <div class="col-xs-4 min-hg1">
-<div>
-  <%= image_tag @product.picture_url, width: '150', height:'250px'%>
-</div>
-<div>
-  <p><strong>Name:-</strong><%= @product.name %></p>
-</div>
-<div>         
-  <p><strong>Price:-</strong><%= @product.price %></p>
-</div>
-<br>
+  <div>
+    <%= image_tag @product.picture_url, width: '150', height:'250px'%>
+  </div>
+  <div>
+    <p><strong>Name:-</strong><%= @product.name %></p>
+  </div>
+  <div>         
+    <p><strong>Price:-</strong><%= @product.price %></p>
+  </div><br>
 </div>
 <div class="col-xs-8 min-hg">
-<div>         
-  <p><strong>Descriptioin:-</strong><%= @product.description %></p>
-</div>  
+  <div>         
+    <p><strong>Descriptioin:-</strong><%= @product.description %></p>
+  </div>  
 </div>
 <div class=all-comments>
   <h4>User Comments:</h4>
   <% @comments.each do |comment| %>
     <% if comment.id %>
-      <div class="comment-no-<%= comment. id %>">
-        <%= render partial: 'comments/comment', locals: {comment: comment } %>
-      </div>
+      <%= render partial: 'comments/comment', locals: {comment: comment } %>
     <% end %>
   <% end %>
 </div>

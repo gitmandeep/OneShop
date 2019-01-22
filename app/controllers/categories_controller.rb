@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
     if @category.save
       #redirect_to categories_path
     else
-      #render 'new'
+      render 'new'
     end
   end
 
@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
   end
 
   private
-    def category_params
-      params.require(:category).permit(:name)
-    end
+  def category_params
+    params.require(:category).permit(:name)
+  end
 end 

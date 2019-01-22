@@ -15,9 +15,10 @@ class CommentsController < ApplicationController
     @comment = @product.comments.build(comment_params)
     set_user
     if @comment.save
+      #render 'new'
       # redirect_to product_url(@product)
     else
-      #render 'new'
+      render 'new'
     end
   end
 
@@ -29,7 +30,6 @@ class CommentsController < ApplicationController
     @comment = @product.comments.find(params[:id])
     @comment_id = @comment.id
     if @comment.update(comment_params)
-
       #redirect_to product_url(@product) 
     else
       render 'edit'
@@ -46,25 +46,27 @@ class CommentsController < ApplicationController
   end
   
   private
-    def comment_params
-      params.require(:comment).permit(:your_comment, :comment_by)
-      end
+  def comment_params
+    params.require(:comment).permit(:your_comment, :comment_by)
+  end
 
-    def get_product
-      @product = Product.find(params[:product_id])  
-    end
-    def check_uesr
-      @comment = Comment.find(params[:id])
-      unless (current_user.id == @comment.user_id || current_user.role == "Admin")
-       #or  unless current_user.email == @comment.comment_by || current_user.role == "Admin")    
-        redirect_to product_path(@product), notice: 'Not your comment, So can\'t Edit or Delete'
-      end
-    end
-    def set_user
-      @comment.user_id = current_user.id
-    end
+  def get_product
+    @product = Product.find(params[:product_id])  
+  end
 
-    def get_category
-      @categories = Category.all
+  def check_uesr
+    @comment = Comment.find(params[:id])
+    unless (current_user.id == @comment.user_id || current_user.role == "Admin")
+     #or  unless current_user.email == @comment.comment_by || current_user.role == "Admin")    
+      redirect_to product_path(@product), notice: 'Not your comment, So can\'t Edit or Delete'
     end
+  end
+
+  def set_user
+    @comment.user_id = current_user.id
+  end
+
+  def get_category
+    @categories = Category.all
+  end
 end
