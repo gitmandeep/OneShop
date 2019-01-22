@@ -25,8 +25,10 @@ class CartsController < ApplicationController
   end
 
   def remove_item_from_cart
+    @p_id = @cart_product.product.id
     @cart_product.destroy
-    redirect_to cart_path(current_user.cart)
+
+    #redirect_to cart_path(current_user.cart)
   end   
 
   private
