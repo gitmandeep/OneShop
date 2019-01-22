@@ -1,0 +1,5 @@
+<tr class="cat-tr-<%= category.id %>">
+  <td><%= category.name %></td>
+  <td><%= link_to 'Destroy', category_path(category.id), method: :delete, remote: true, data: { confirm:'Are you sure?' } %></td>
+</tr>
+  

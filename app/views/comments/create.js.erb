@@ -1,2 +1,2 @@
 $('.all-comments').append("<%= escape_javascript(render partial: 'comment', locals: {comment: @comment}) %>")
-// $('.user-comment').html("")
+$('.user-comment').html("<%= escape_javascript(render 'form') %>")

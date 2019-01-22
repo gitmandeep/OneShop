@@ -11,4 +11,6 @@ class Product < ApplicationRecord
   has_many :carts, through: :carts_products 
 
   validates :name, :description, :price, :picture, :category_id, presence: true
+  validates :price, numericality: { greater_than_or_equal_to: 1 }
+
 end

@@ -1,9 +1,9 @@
 <center><h3>My Cart</h3></center><br>
 <% @cart.carts_products.each do |cart_product| %>
   <% product = cart_product.product %>
-  <div class="col-xs-6 col-xs-offset-0 col-lg-6 col-lg-offset-0">
+  <div class="col-xs-6 min-hg">
     <div>
-      <%= image_tag product.picture_url, width: '200px',
+      <%= image_tag product.picture_url, width: '150px',
       height: '250px'%>
     </div>
     <div>
@@ -12,7 +12,7 @@
     <div class="">
       <h4>
         Quantity: <%= link_to '-', iterate_quantity_carts_path(product_id: product.id, reduce: true),remote: true, class: "btn btn-primary btn-xs"%>
-        <!-- Here first we find the tag (b) to apply js on it by class (product-quantity-<%= product.id %> this code give us) --> -->
+        <!-- Here first we find the tag (b) to apply js on it by class (product-quantity-<%= product.id %> this code give us) -->
         <b class="product-quantity-<%= product.id %>"><%= cart_product.quantity %></b>
         <%= link_to '+', iterate_quantity_carts_path(product_id: product.id),remote: true, class: "btn btn-primary btn-xs"%> | Total Price: <span class="product-price-<%= product.id %>">₹ <%=product.price.to_i*cart_product.quantity.to_i %></span>
       </h4>

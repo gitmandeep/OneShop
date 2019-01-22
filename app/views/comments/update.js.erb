@@ -1,1 +1,1 @@
-$('.comment-no-<%= @comment.id %>').html("<%= @comment.your_comment %>")
+$('.comment-no-<%= @comment_id %>').html("<%= escape_javascript(render partial: 'comment', locals: {comment: @comment}) %>")

@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :check_privileges!, only: [:index, :new, :create, :edit, :destroy]
   def index
+    #@product = Product.find(params[:id])
     @products = Product.all.page params[:page]
   end
 
@@ -39,8 +40,9 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
+    @product_id = @product.id
     @product.destroy
-    redirect_to products_path
+    #redirect_to products_path
   end
 
   def userview 

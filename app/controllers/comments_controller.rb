@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     if @comment.save
       # redirect_to product_url(@product)
     else
-      render 'new'
+      #render 'new'
     end
   end
 
@@ -27,8 +27,10 @@ class CommentsController < ApplicationController
 
   def update
     @comment = @product.comments.find(params[:id])
+    @comment_id = @comment.id
     if @comment.update(comment_params)
-      # redirect_to product_url(@product) 
+
+      #redirect_to product_url(@product) 
     else
       render 'edit'
     end

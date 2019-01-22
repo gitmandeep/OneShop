@@ -1,0 +1,11 @@
+<%= render 'category_error' %>
+<%= form_with scope: :category, url: categories_path, method: :POST, remote: true do |form| %>
+  <p>
+    <%= form.label :name %> <br/>
+    <%= form.text_field :name %>
+  </p><br/>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+<%= link_to 'Back', products_url %>

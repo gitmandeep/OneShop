@@ -2,7 +2,7 @@
   <div class="col-xs-4 min-hg">
     <div class="product_img img-responsive">
       <%= image_tag product.picture_url, width: '150px',
-      height: '150px'%>
+      height: '250px'%>
     </div>
     <div class="product_name">
       <h4><%= product.name %></h4>
@@ -15,5 +15,5 @@
 <%end%>
 <center>
   <%= paginate @products, window: 2 %><br>
-  <h5><%= page_entries_info @products, entry_name: 'item' %></h5>
+  <!-- <h5><%= page_entries_info @products, entry_name: 'item' %></h5> -->
 </center>

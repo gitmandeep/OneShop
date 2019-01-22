@@ -1,53 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-  <style>
-    th, td {border: 2px solid blue;text-align: center; 
-              border-collapse: collapse;
-
-    }
-  </style>
-</head>
-<body>
-  <center>
-  <h1> Products </h1>
-  </center>
-  <center>
-    <table style="padding: 1px; text-align: center; 
-                width: 100%; border: 2px solid blue; 
-                border-collapse: collapse;">
-
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Picture</th>
-          <th>Category</th>
-          <th colspan="3">Edit Details</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @products.each do |product| %>
-          <tr>
-            <td><%= product.name %></td>
-            <td><%= product.description %></td>
-            <td><%= product.price %></td>
-            <td><%= image_tag product.picture_url, width: '100%' if product.picture? %></td>
-            <td><%= product.category && product.category.name %></td> 
-            <td><%= link_to 'Edit', edit_product_path(product) %></td>
-            <td><%= link_to 'show', product_path(product) %></td>
-            <td><%= link_to 'Destroy', product, method: :delete, data: { confirm:'Are you sure?' } %></td>  
-           
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= paginate @products %>
-  </center>
-</body>
-</html>
+<% @products.each do |product| %>
+  <div class="col-xs-4 min-hg">
+    <div class="product_img img-responsive">
+      <%= image_tag product.picture_url, width: '150px',
+      height: '250px'%>
+    </div>
+    <div class="product_name">
+      <h4><%= product.name %></h4>
+    </div>    
+    <div class="price_line">
+      <h4 class="price"> ₹ <%=product.price%></h4>
+    </div>
+    <div>
+      <%= product.category && product.category.name %>
+    </div>
+      <%= link_to 'Edit', edit_product_path(product) %> | <%= link_to 'Show More', product_path(product), class: "btn btn-link" %>| <%= link_to 'Destroy', product, method: :delete, remote: true, data: { confirm:'Are you sure?' } %> 
+  </div>
+<%end%>
+<center>
+  <%= paginate @products, window: 2 %><br>
+</center> 
+<td></td> 
+       
 
 
 

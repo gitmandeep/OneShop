@@ -37,9 +37,12 @@
             <div class="well sidebar-nav ">
               <ul class="nav nav-list">
                 <li class="nav-header"></li>
+                <li><%= link_to 'Home', products_url%></li>
                 <li><%= link_to 'Add New Product', new_product_path %></li>
-                <li><%= link_to 'Add New Category', new_category_path %></li>
+  
+               <li><%= link_to 'List of Category', categories_path %></li>
               </ul>
+              
             </div>
           </div>
       <% elsif user_signed_in? && current_user.role != "Admin"%>
