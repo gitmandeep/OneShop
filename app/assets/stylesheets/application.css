@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  
+ 
  */
 .dropdown{
 
@@ -20,3 +21,5 @@
 }
 
 .min-hg{min-height: 450px}
+.min-hg-p{min-height: 280px}
+.mg-top{margin: 0px 0px 30px 0px;}

@@ -1,4 +1,4 @@
-<%= link_to 'Add New Category', new_category_path, remote: true %>
+<%= link_to 'Add New Category', new_category_path, remote: true, class: "btn btn-primary btn-xs" %>
 <div class="add-category"></div>
 <!DOCTYPE html>
 <html>
@@ -18,8 +18,8 @@
             border-collapse: collapse;"
             class="d">
 
-    <thead>
-      <tr>
+    <thead style="text-align: center;">
+      <tr >
         <th>Name</th>
         <th>Edit Details</th>
       </tr>
@@ -27,7 +27,7 @@
 
     <tbody class="categories-listing">
       <% @categories.each do |c| %>
-        <%= render partial: 'category', locals: {category: c, jayesh: "name"} %>
+        <%= render partial: 'category', locals: {category: c }%>
       <% end %>
     </tbody>
   </table>

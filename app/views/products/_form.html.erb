@@ -1,26 +1,32 @@
 <%= form_with scope: :product, url: products_path, local: true do |form| %>
-
-  <p>
-    <%= form.label :name %> <br/>
-    <%= form.text_field :name, :required => true, placeholder: "Product Name" %>
-  </p>
-  <p>
-    <%= form.label :description %><br/>
-    <%= form.text_area :description, rows: 10, cols:30 %>
-  </p>
-  <p>
-    <%= form.label :price %><br/>
-    <%= form.number_field :price, :required => true, :min=>1  %>
-  </p>    
-  <p>
-    <%= form.label :picture %><br/>
-    <%= form.file_field :picture, id: :product_picture %>
-  </p><br/>
-  <p>
-    <%= form.label :category_id %><br/>
-    <%= form.collection_select :category_id, Category.all, :id, :name%>
-  </p><br/>
-  <p>
-    <%= form.submit %>
-  </p>    
+<div>
+  <div class="col-xs-8">
+    <p>
+      <%= form.label :name %> <br/>
+      <%= form.text_field :name, :required => true, placeholder: "Product Name" %>
+    </p>
+    
+    <p>
+      <%= form.label :price %><br/>
+      <%= form.number_field :price, :required => true, :min=>1  %>
+    </p>    
+    <p>
+      <%= form.label :picture %><br/>
+      <%= form.file_field :picture, id: :product_picture %>
+    </p><br/>
+    <p>
+      <%= form.label :category_id %><br/>
+      <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: 'Select promptoduct Category'}%>
+    </p><br/>
+    <p>
+      <%= form.submit %>
+    </p>
+  </div>
+  <div class="col-xs-4 min-hg-p">
+    <p>
+      <%= form.label :description %><br/>
+      <%= form.text_area :description, rows: 10, cols:30 %>
+    </p>
+  </div>   
 <% end %>
+</div>

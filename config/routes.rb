@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :comments
     collection do
       get :by_category
+      get :order
     end
   end
 

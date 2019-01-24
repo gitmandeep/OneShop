@@ -63,7 +63,15 @@ class ProductsController < ApplicationController
       redirect_to products_userview_url
     end
   end
-
+   
+  
+  def order
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
+  end   
+  
   private
   def product_params
     params.require(:product).permit(:name, :description, :price, :picture, :category_id)
@@ -74,4 +82,6 @@ class ProductsController < ApplicationController
       redirect_to "/", notice: 'You dont have enough permissions to be here' 
     end
   end
+
+
 end
