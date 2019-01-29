@@ -21,41 +21,41 @@
                 <span class="caret"></span></button>
                   <ul class="dropdown-menu">
                     <li><span ></span><%= link_to 'My profile', edit_user_registration_path %> </li>
-                    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-                    
+                    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>  
                   </ul>
               </ul>
-           </ul>
-         <% end %>
+            </ul>
+          <% end %>
       </div>
     </div>       
     <div class="container">
       <div class="row">
         <% if user_signed_in? && (current_user.role == "Admin") %>
-            <h3 align="left"><strong>Welcome Admin</strong></h3>
-          <div class="mg-top">
+          <div class="mg-top products-by-category">
+            <strong>Welcome Admin</strong>
             <%= render '/products/category' %>
           </div>
-           <div class="col-lg-3">
-              <div class="well sidebar-nav ">
-                <ul class="nav nav-list">
-                  <li class="nav-header"></li>
-                  <li><%= link_to 'Home', products_url%></li>
-                  <li><%= link_to 'Add New Product', new_product_path %></li>
-    
-                 <li><%= link_to 'List of Category', categories_path %></li>
-                </ul>
-                
-              </div>
-            </div>
-        <% elsif user_signed_in? && current_user.role != "Admin"%>
           <div class="col-lg-3">
             <div class="well sidebar-nav ">
               <ul class="nav nav-list">
                 <li class="nav-header"></li>
-                  <% if current_user.cart %>
-                    <li><%= link_to " My Cart", cart_path(current_user.cart)  %></li>
-                  <%end%>
+                <li><%= link_to 'Home', products_url%></li>
+                <li><%= link_to 'Add New Product', new_product_path %></li>
+                <li><%= link_to 'List of Category', categories_path %></li>
+              </ul>
+            </div>
+          </div>
+        <% elsif user_signed_in? && current_user.role != "Admin"%>
+          <div class="mg-top products-by-category">
+            <%= render '/products/category' %>
+          </div>
+          <div class="col-lg-3">
+            <div class="well sidebar-nav ">
+              <ul class="nav nav-list">
+                <li class="nav-header"></li>
+                <% if current_user.cart %>
+                  <li><%= link_to " My Cart", cart_path(current_user.cart)  %></li>
+                <%end%>
                 <li><%= link_to "All Product", products_userview_path  %></li>
                 <li><%= link_to "Product Category", "#"  %></li>
                   <ul>
@@ -69,7 +69,6 @@
               </ul>
             </div><!--/.well -->
           </div><!--/span-->
-        <% else %>
         <% end -%>
     <div class="col-lg-9 by-category">
       <%= bootstrap_flash %>    
@@ -81,8 +80,7 @@
         <footer>  
           <div class="container">
             <p>&copy; OakTree 2018</p>
-          </div>  
-               
+          </div>        
         </footer>
       </center>
     </div> <!-- /container -->

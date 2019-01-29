@@ -1,4 +1,13 @@
-<div>
-  
+<div style="float: right;">
+ <%= select_tag 'by_category', options_for_select(all_categories.map{ |c| [c.name, c.id] }), { prompt: 'Select ptoduct Category', id: 'category-filter', class: "btn btn-warning btn-xs"} %>
 </div>
+
+<script type="text/javascript">
+  $('#category-filter').on('change', function(){
+    $.ajax({
+      type: 'GET',
+      url: '/products/by_category?category_id=' + this.value
+    });
+  });
+</script>
 
