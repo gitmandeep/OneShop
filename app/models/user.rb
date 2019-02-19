@@ -1,11 +1,14 @@
 class User < ApplicationRecord
   has_many :comments, dependent: :destroy
+  has_many :addresses, dependent: :destroy
   has_one  :cart, dependent: :destroy
 
-  validate :password_complexity
+  accepts_nested_attributes_for :addresses, allow_destroy: true
+
+  # validate :password_complexity
   validates :first_name, :last_name, :dob, :email, :mobile, presence: true
   
-  after_create :assign_cart
+  # after_create :assign_cart
   after_create :send_msg
 
   # Include default devise modules. Others available are:

@@ -15,6 +15,10 @@
       <%= form.file_field :picture, id: :product_picture %>
     </p><br/>
     <p>
+      <%= form.label :number_of_units %><br/>
+      <%= form.number_field :number_of_units, :required => true, :min=> 1%>
+    </p><br/>
+    <p>
       <%= form.label :category_id %><br/>
       <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: 'Select promptoduct Category'}%>
     </p><br/>

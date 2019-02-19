@@ -1,0 +1,36 @@
+<div class="col-xs-8 nested-fields">
+  <p class="field">
+    <%= f.label :name %> <br/>
+    <%= f.text_field :name, :required => true %>
+  </p>
+  
+  <p class="field">
+    <%= f.label :mobile %><br/>
+    <%= f.number_field :mobile, :required => true  %>
+  </p>    
+  <p class="field">
+    <%= f.label :pincode %><br/>
+    <%= f.number_field :pincode %>
+  </p><br/>
+  <p class="field">
+    <%= f.label :address %><br/>
+    <%= f.text_area :address %>
+  </p><br/>
+  <p class="field">
+    <%= f.label :city %><br/>
+    <%= f.text_field :city %>
+  </p><br/>
+  <p class="field">
+    <%= f.label :state %><br/>
+    <%= f.text_field :state %>
+  </p><br/>
+  <p class="field">
+    <%= f.label :address_type %><br />
+    <%= f.label :address_type, "Home", :value => "true"  %>
+    <%= f.radio_button :address_type, true %>
+    <%= f.label :address_type, "Work", :value => "false" %>
+    <%= f.radio_button :address_type, false %>
+  </p>
+  <%= link_to_remove_association "remove address", f %>
+</div>
+
