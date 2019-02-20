@@ -6,28 +6,46 @@ class CartsController < ApplicationController
   def add_to_cart
     cp = CartsProduct.find_or_initialize_by(product_id: params[:product_id], cart_id: current_user.cart.id)
     cp.update(quantity: cp.quantity + 1)
+    @product = Product.find(params[:product_id])
+    @product.number_of_units = @product.number_of_units - 1
+    @product.save
+    @remaining = @product.number_of_units 
     redirect_to cart_path(current_user.cart)
   end
   
   def show
+    @remaining = Product.find_or_initialize_by(params[:product_id]).number_of_units
     @cart = current_user.cart
+    @user = current_user
   end
   
   def iterate_quantity
+      @product = Product.find(params[:product_id])
     if params[:reduce]
       @cart_product.update(quantity: @cart_product.quantity - 1)
+      @product.number_of_units = @product.number_of_units + 1
+      @product.save
+      @remaining = @product.number_of_units
+      # binding.pry
         unless @cart_product.quantity > 0
           @cart_object_removed = true if @cart_product.destroy
         end
     else
-      @cart_product.update(quantity: @cart_product.quantity + 1)  
+      @cart_product.update(quantity: @cart_product.quantity + 1)
+      @product.number_of_units = @product.number_of_units - 1
+      @product.save
+      @remaining = @product.number_of_units
+      # binding.pry
     end
   end
 
   def remove_item_from_cart
+    cp = CartsProduct.find_or_initialize_by(product_id: params[:product_id], cart_id: current_user.cart.id)
+    @product = Product.find(params[:product_id])
+    @product.number_of_units = @product.number_of_units + cp.quantity
+    @product.save
     @p_id = @cart_product.product.id
     @cart_product.destroy
-
     #redirect_to cart_path(current_user.cart)
   end   
 

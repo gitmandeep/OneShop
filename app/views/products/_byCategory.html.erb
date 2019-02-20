@@ -1,7 +1,7 @@
 <% @product.each do |product| %>
   <div class="col-xs-4 col-xs-offset-0 col-lg-4 col-lg-offset-0">
     <div class="product_img img-responsive">
-      <%= image_tag product.picture_url, width: '150px', height:'250px'%>
+      <%= image_tag product.picture, width: '150px', height:'250px'%>
     </div>
     <div class="product_name">
       <h4><%= product.name %></h4>

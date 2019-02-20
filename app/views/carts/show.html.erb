@@ -3,7 +3,7 @@
   <% product = cart_product.product %>
   <div class="col-xs-6 min-hg cart-product-no-<%= product.id%>" >
     <div>
-      <%= image_tag product.picture_url, width: '150px',
+      <%= image_tag product.picture, width: '150px',
       height: '250px'%>
     </div>
     <div>
@@ -19,8 +19,17 @@
     </div>
     <div>
       <%= link_to 'Remove item', remove_item_from_cart_carts_path(product_id: product.id),remote: true, class: "btn btn-success btn-sm"%>
-
     </div>
     <hr>
   </div>
 <%end%>
+
+<% if @cart.carts_products != nil %>
+  <div style="margin-top: 500px;">
+    <%= link_to 'check out', new_user_address_path(user_id: @user.id), class: "btn btn-info btn-lg"%>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  alert('Only ' + '<%= @remaining %>' + ' products left.');
+</script>
