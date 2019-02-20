@@ -13,4 +13,14 @@ class Product < ApplicationRecord
 
   validates :name, :description, :price, :pictures, :category_id, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 1 }
+  validate :white_list
+
+  def white_list
+  	pictures.each do |picture|
+  		binding.pry
+	  	if !picture.content_type.in?(%w(image/jpeg image/png image/jpg))
+	      errors.add(:pictures, 'Must be a of jpeg, jpg or png format')
+	    end
+		end
+  end
 end
