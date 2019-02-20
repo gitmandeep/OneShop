@@ -26,7 +26,7 @@
      
       <% @products.each do |product| %>
         <tr>
-          <td><%= image_tag Product.find(product.product_id).picture, width: '50px', height: '50px' %></td>
+          <td><%= image_tag Product.find(product.product_id).pictures[0], width: '50px', height: '50px' %></td>
           <td><%= Product.find(product.product_id).name %></td>
           <td><%= Product.find(product.product_id).price %></td>
           <td><%= product.quantity %></td>
