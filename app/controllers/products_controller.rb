@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+
     if @product.save
       redirect_to products_path
     else
@@ -74,7 +75,7 @@ class ProductsController < ApplicationController
   
   private
   def product_params
-    params.require(:product).permit(:name, :description, :price, :picture, :number_of_units, :category_id)
+    params.require(:product).permit(:name, :description, :price, :number_of_units, :category_id, :pictures => [])
   end
 
   def check_privileges!

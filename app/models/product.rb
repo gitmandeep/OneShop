@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   # mount_uploader :picture, PictureUploader
-  has_one_attached :picture
+  has_many_attached :pictures
 
   paginates_per 9
 
@@ -11,7 +11,7 @@ class Product < ApplicationRecord
   has_many :carts_products, dependent: :destroy
   has_many :carts, through: :carts_products 
 
-  validates :name, :description, :price, :picture, :category_id, presence: true
+  validates :name, :description, :price, :pictures, :category_id, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 1 }
 
 end

@@ -1,4 +1,4 @@
-<%= form_with scope: :product, url: products_path, local: true do |form| %>
+<%= form_with scope: :product, multipart: true, url: products_path, local: true do |form| %>
 <div>
   <div class="col-xs-8">
     <p>
@@ -11,8 +11,8 @@
       <%= form.number_field :price, :required => true, :min=>1  %>
     </p>    
     <p>
-      <%= form.label :picture %><br/>
-      <%= form.file_field :picture, id: :product_picture %>
+      <%= form.label :pictures %><br/>
+      <%= form.file_field :pictures, multiple: true, id: :product_picture %>
     </p><br/>
     <p>
       <%= form.label :number_of_units %><br/>
