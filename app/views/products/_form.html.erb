@@ -23,7 +23,7 @@
       <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: 'Select promptoduct Category'}%>
     </p><br/>
     <p>
-      <%= form.submit %>
+      <%= form.submit data: { "disable-with": "Saving..." } %>
     </p>
   </div>
   <div class="col-xs-4 min-hg-p">

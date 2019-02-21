@@ -1,2 +1,2 @@
-$('.categories-listing').append("<%= escape_javascript(render partial: 'category', locals: {category: @category}) %>")
+$('.categories-listing').append("<%= j (render partial: 'category', locals: {category: @category}) %>")
 $('.cat-text').val('')

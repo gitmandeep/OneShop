@@ -1,1 +1,1 @@
-$('.comment-no-<%= @comment.id %>').html("<%= escape_javascript(render 'form') %>")
+$('.comment-no-<%= @comment.id %>').html("<%= j (render 'form') %>")

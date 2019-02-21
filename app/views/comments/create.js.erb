@@ -1,2 +1,7 @@
-$('.all-comments').append("<%= escape_javascript(render partial: 'comment', locals: {comment: @comment}) %>")
+$('.all-comments').append("<%= j (render partial: 'comment', locals: {comment: @comment}) %>")
 $('.fc').val('')
+
+
+// Yha par jo locals me jo @commnet hai vo controller vala hai 
+//fir use commnet bana ke partial par pass kiya hai 
+//kyuki partial par commnet me mil rha hai
