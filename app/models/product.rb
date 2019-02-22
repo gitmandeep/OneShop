@@ -17,7 +17,6 @@ class Product < ApplicationRecord
 
   def white_list
   	pictures.each do |picture|
-  		binding.pry
 	  	if !picture.content_type.in?(%w(image/jpeg image/png image/jpg))
 	      errors.add(:pictures, 'Must be a of jpeg, jpg or png format')
 	    end

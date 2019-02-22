@@ -2,8 +2,8 @@
   location.reload();
 <% else %>
   $('.product-quantity-<%= @cart_product.product.id %>').html("<%= @cart_product.quantity %>")
+  $("#remainingP<%= @product.id %>").html("Products left: <%= @remaining %>")
   $('.product-price-<%= @cart_product.product.id %>').html("₹ <%= @cart_product.product.price.to_i*@cart_product.quantity.to_i %>")
 <% end %>
 
 
-alert('Only ' + '<%= @remaining %>' + ' products left.')

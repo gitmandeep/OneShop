@@ -31,14 +31,14 @@
     </div>    
     <div class="">
       <h4>
-        Quantity: <%= link_to '-', iterate_quantity_carts_path(product_id: product.id, reduce: true),remote: true, class: "btn btn-primary btn-xs"%>
+        Quantity: <%= link_to '-', iterate_quantity_carts_path(product_id: product.id, reduce: true),remote: true, class: "btn btn-primary btn-xs", id: "decreaseItem_product.id"%>
         <!-- Here first we find the tag (b) to apply js on it by class (product-quantity-<%= product.id %> this code give us) -->
         <b class="product-quantity-<%= product.id %>"><%= cart_product.quantity %></b>
-        <%= link_to '+', iterate_quantity_carts_path(product_id: product.id),remote: true, class: "btn btn-primary btn-xs"%> | Total Price: <span class="product-price-<%= product.id %>">₹ <%=product.price.to_i*cart_product.quantity.to_i %></span>
+        <%= link_to '+', iterate_quantity_carts_path(product_id: product.id),remote: true, class: "btn btn-primary btn-xs", id: "increaseItem_product.id"%> | Total Price: <span class="product-price-<%= product.id %>">₹ <%=product.price.to_i*cart_product.quantity.to_i %></span>
       </h4>
     </div>
     <div>
-      <%= link_to 'Remove item', remove_item_from_cart_carts_path(product_id: product.id),remote: true, class: "btn btn-success btn-sm"%>
+      <%= link_to 'Remove item', remove_item_from_cart_carts_path(product_id: product.id),remote: true, class: "btn btn-success btn-sm"%> <span id="remainingP<%= product.id %>" style="margin-left: 120px; font-size: 16px;"></span>
     </div>
     <hr>
   </div>
@@ -50,6 +50,4 @@
   </div>
 <% end %>
 
-<script type="text/javascript">
-  alert('Only ' + '<%= @remaining %>' + ' products left.');
-</script>
+
