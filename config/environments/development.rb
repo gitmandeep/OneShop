@@ -70,9 +70,9 @@ config.action_mailer.smtp_settings = {
     port: 587,
     #domain: "example.com",
     authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: 'rrmandeep18@gmail.com',
-    password:'amit@1993'
+    # enable_starttls_auto: true,
+    user_name: ENV["EMAIL"],
+    password: ENV["PASSWORD"]
   }
 config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 

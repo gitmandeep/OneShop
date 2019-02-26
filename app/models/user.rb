@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :dob, :email, :mobile, presence: true
   
   # after_create :assign_cart
-  after_create :send_msg
+  after_create :send_msg, :send_mail
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable
@@ -43,11 +43,14 @@ class User < ApplicationRecord
 
     # Uncomment the section below if you want users to be created if they don't exist
     unless user
-        user = User.new(first_name: data['name'],
-           email: data['email'],
-           password: Devise.friendly_token[0,20]
-        )
-        user.save(validate: false)
+      first_name = data['name'].split(" ")[0]
+      last_name = data['name'].split(" ")[1] 
+      user = User.new(first_name: first_name,
+        last_name: last_name,
+        email: data['email'],
+        password: Devise.friendly_token[0,20]
+      )
+      user.save(validate: false)
     end
     user
   end
@@ -65,6 +68,10 @@ class User < ApplicationRecord
     to: '+917987392544',
     body: 'Hey there! You are Successfully Login in OneShop.'
     )
+  end
+
+  def send_mail
+    UserMailer.welcome_email(self).deliver_now
   end
 
   
