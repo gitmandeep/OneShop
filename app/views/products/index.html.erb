@@ -36,9 +36,14 @@
     <%= link_to 'Edit', edit_product_path(product) %> | <%= link_to 'Show More', product_path(product), class: "btn btn-link" %>| <%= link_to 'Destroy', product, method: :delete, remote: true, data: { confirm:'Are you sure?' } %> 
   </div>
 <%end%>
-<center>
-  <%= paginate @products, window: 2 %><br>
-</center> 
+
+<% if @products.blank? %>
+  <h4 class="text-danger">There are no products containing the term <%= params[:search] %>.</h4>
+<% end %>
+
+<!-- <center>
+  <%#= paginate @products, window: 2 %><br>
+</center> --> 
  
 
 

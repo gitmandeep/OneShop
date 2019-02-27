@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
- 
+  before_action :authenticate_user!
   before_action :check_cart_available, only: [:add_to_cart]
   before_action :find_cart_product, only: [:iterate_quantity, :remove_item_from_cart]
 

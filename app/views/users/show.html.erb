@@ -1,0 +1,6 @@
+<p class="text-info" style="font-size: 25px; font-weight: bold;"><%= @user.first_name.capitalize + " " + @user.last_name.capitalize %></p>
+<p><strong>DoB: </strong><%= @user.dob %></p>
+<p><strong>Email: </strong><%= @user.email %></p>
+<p><strong>Mobile: </strong><%= @user.mobile %></p>
+
+<%= link_to "Edit profile", edit_user_registration_path, class: "btn btn-success" %>

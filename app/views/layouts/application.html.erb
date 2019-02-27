@@ -13,19 +13,37 @@
   <body>
     <div class="navbar navbar-default navbar-static-top">
       <div class="container">
-        <a class="navbar-brand" href="#">OneShop</a>
-          <% if user_signed_in? %>
-            <ul class="nav navbar-nav navbar-right">
-              <ul class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button"data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Welcome! <%= current_user.first_name %>
-                <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <li><span ></span><%= link_to 'My profile', edit_user_registration_path %> </li>
-                    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>  
-                  </ul>
-              </ul>
-            </ul>
+        <a class="navbar-brand" href="/">OneShop</a>
+        <div>
+          <%= form_tag(products_path, :method => "get", id: "search-form", class: "nav navbar-nav") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Products", class: "form-control", :style=> "margin-top: 7px; padding-right: 170px; margin-left: 50px;"%>
+            <%= submit_tag "Search", :name => nil, :style => "display: none;"%>
           <% end %>
+        </div>
+        <% if !current_user %>
+          <ul class="nav navbar-nav navbar-right">
+            <ul class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button"data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
+              <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><span ></span><%= link_to 'Login', new_user_session_path %> </li> 
+                  <li><span ></span><%= link_to 'Sign up', new_user_registration_path %> </li>
+                </ul>
+            </ul>
+          </ul>
+        <% end %>
+        <% if user_signed_in? %>
+          <ul class="nav navbar-nav navbar-right">
+            <ul class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button"data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Welcome! <%= current_user.first_name %>
+              <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><span ></span><%= link_to 'My profile', user_path(current_user.id) %> </li>
+                  <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>  
+                </ul>
+            </ul>
+          </ul>
+        <% end %>
       </div>
     </div>       
     <div class="container">
@@ -70,10 +88,17 @@
             </div><!--/.well -->
           </div><!--/span-->
         <% end -%>
-    <div class="col-lg-9 by-category">
-      <%= bootstrap_flash %>    
-      <%= yield %>
-    </div>
+    <% if current_user %>    
+      <div class="col-lg-9 by-category">
+        <%= bootstrap_flash %>    
+        <%= yield %>
+      </div>
+    <%else%>
+      <div class="col-lg-12 by-category">
+        <%= bootstrap_flash %>    
+        <%= yield %>
+      </div>
+    <% end %>
       
     </div><!--/row-->
       <center>

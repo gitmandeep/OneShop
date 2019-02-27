@@ -1,8 +1,13 @@
 class ProductsController < ApplicationController
-  before_action :check_privileges!, only: [:index, :new, :create, :edit, :destroy]
+  # before_action :check_privileges!, only: [:index, :new, :create, :edit, :destroy]
   def index
     #@product = Product.find(params[:id])
     @products = Product.all.page params[:page]
+    if params[:search]
+      @products = Product.search(params[:search]).order("created_at DESC")
+    else
+      @products = Product.all.order("created_at DESC")
+    end
   end
 
   def show

@@ -45,8 +45,10 @@
   <% end %>
 </div>
 
-<div class="user-comment">
-  <%= render 'comments/form' %>
-</div>
+<% if current_user %>
+  <div class="user-comment">
+    <%= render 'comments/form' %>
+  </div>
+<% end %>
 
 <!-- <p><strong><%#= link_to "Add Comment", new_product_comment_url(@product), remote: true, class: "btn btn-success btn-sm"   %></strong> </p> -->

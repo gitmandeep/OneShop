@@ -22,11 +22,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: [:show]
+
   resources :categories, except: [:edit, :update]
   resources :users do
     resources :addresses
   end
-  root 'products#redirect_after_sign_in'
+  root 'products#userview'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
  
