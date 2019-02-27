@@ -1,11 +1,9 @@
 <%= render 'category_error' %>
-<%= form_with scope: :category, url: categories_path, method: :POST, remote: true do |form| %>
-  <p>
-    <%= form.label :name %> <br/>
+<%= bootstrap_form_with scope: :category, url: categories_path, method: :POST, remote: true do |form| %>
+  
     <%= form.text_field :name, class: "cat-text" %>
-  </p><br/>
-  <p>
-    <%= form.submit %>
-  </p>
+ 
+    <%= form.submit class: "btn btn-primary btn-xm" %> <%= link_to 'Back', products_url,class: "btn btn-warning btn-xm" %>
+  
 <% end %>
-<%= link_to 'Back', products_url %>
+

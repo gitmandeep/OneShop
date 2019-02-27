@@ -1,36 +1,9 @@
-<%= form_with scope: :product, multipart: true, url: products_path, local: true do |form| %>
-<div>
-  <div class="col-xs-8">
-    <p>
-      <%= form.label :name %> <br/>
-      <%= form.text_field :name, :required => true, placeholder: "Product Name" %>
-    </p>
-    
-    <p>
-      <%= form.label :price %><br/>
-      <%= form.number_field :price, :required => true, :min=>1  %>
-    </p>    
-    <p>
-      <%= form.label :pictures %><br/>
-      <%= form.file_field :pictures, multiple: true, id: :product_picture %>
-    </p><br/>
-    <p>
-      <%= form.label :number_of_units %><br/>
-      <%= form.number_field :number_of_units, :required => true, :min=> 1%>
-    </p><br/>
-    <p>
-      <%= form.label :category_id %><br/>
-      <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: 'Select promptoduct Category'}%>
-    </p><br/>
-    <p>
-      <%= form.submit data: { "disable-with": "Saving..." } %>
-    </p>
-  </div>
-  <div class="col-xs-4 min-hg-p">
-    <p>
-      <%= form.label :description %><br/>
-      <%= form.text_area :description, rows: 10, cols:30 %>
-    </p>
-  </div>   
+<%= bootstrap_form_with scope: :product, multipart: true, url: products_path, local: true do |form| %>
+  <%= form.text_field :name, :required => true, placeholder: "Product Name" %> 
+  <%= form.number_field :price, :required => true, :min=>1 %> 
+  <%= form.file_field :pictures, multiple: true, id: :product_picture %>
+  <%= form.number_field :number_of_units, :required => true, :min=> 1%>
+  <%= form.collection_select :category_id,  Category.all, :id, :name, { prompt: 'Select promptoduct Category'} %>
+  <%= form.text_area :description, rows: 10, cols:30 %>
+  <%= form.submit data: { "disable-with": "Saving..." },class: "btn btn-success btn-xm" %>   
 <% end %>
-</div>

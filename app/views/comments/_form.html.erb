@@ -1,16 +1,9 @@
-<%= form_with(model: [@product, @comment], remote: true) do |form| %>
-  <%= render 'comments/comment_error' %>
-  <div>
-    <p>
-      <%= form.label :your_comment %><br>
-      <%= form.text_area :your_comment, rows: 1, cols:50, class: 'fc' %>
-    </p>
-    <p>
-      <%= form.label :comment_by %><br>
-      <%= form.text_field :comment_by, :value => current_user.email, :readonly => true %>
-    </p>
-    <p>
-      <%= form.submit %>
-    </p>
-  </div>  
+<%= bootstrap_form_with(model: [@product, @comment], remote: true) do |form| %>
+  <%= render 'comments/comment_error' %> 
+  <%= form.text_area :your_comment, rows: 1, cols:50, class: 'fc' %>
+  
+  <%= form.text_field :comment_by, :value => current_user.email, :readonly => true %>
+  
+  <%= form.submit class: "btn btn-primary btn-xm" %>
+      
 <% end %>
