@@ -1,19 +1,24 @@
 class AddressesController < ApplicationController
 	def new
     @user = User.find(params[:user_id])
-		@products = CartsProduct.all
-    @address = @user.addresses.new
+		@products = @user.cart.carts_products
+    # @address = @user.addresses.new
   end
 
   def create
-  	@user = User.find(params[:user_id])
-    @address = @user.addresses.build(address_params)
-    @address.save
+    @user = User.find(params[:user_id])
+    binding.pry
+    @address = @user.addresses.create(user_params)
+    # @address.save
   end
 
-private
+  private
 	def address_params
-    params.require(:user).permit(:name, :mobile, :pincode, :address, :city, :state, :address_type)
+    params.require(:user).require(:addresses_attributes).permit(:id, :name, :mobile, :pincode, :address, :city, :state, :address_type)
+  end
+
+  def user_params
+    params.require(:user).permit(addresses_attributes: [:id, :name, :mobile, :pincode, :address, :city, :state, :address_type, :_destroy])
   end
 end
 

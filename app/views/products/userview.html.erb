@@ -30,10 +30,19 @@
     <div class="price_line">
       <h4 class="price"> ₹ <%=product.price%></h4>
     </div>
-    <%= link_to 'Show More', product_path(product), class: "btn btn-link" %> |<%= link_to 'Add to Cart', add_to_cart_carts_path(product_id: product.id), class: "btn btn-link" %> 
+    <%= link_to 'Show More', product_path(product), class: "btn btn-sm btn-success" %> <%= link_to 'Add to Cart', add_to_cart_carts_path(product_id: product.id), class: "btn btn-sm btn-primary" %> 
   </div>
 <% end %>
+
+<div id="login-window" class="modal fade" role="dialog"></div>
 <center>
   <%= paginate @products, window: 2 %><br>
   <!-- <h5><%= page_entries_info @products, entry_name: 'item' %></h5> -->
 </center>
+
+<script type="text/javascript">
+  $( window ).load(function() {
+    $("#login-window").html("<%= j (render '/layouts/modal') %>");
+    $("#login-window").modal();
+  });
+</script>

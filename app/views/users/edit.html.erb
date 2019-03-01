@@ -1,0 +1,26 @@
+<h1>Check out</h1>
+
+<%= form_with model: [@user], local: true do |form| %>
+<div>
+  <h3 class="text-success"><%= @user.first_name%> signed in.</h3>
+  <div class="mt-4" id="addresses">
+    <% if @user.addresses %>
+      <%= render 'addresses_view', locals: {user: @user} %>
+    <% else %>
+      <%= form.fields_for :addresses do |address| %>
+        <%= render 'users/address_fields', :f => address %>
+      <% end %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'add address', form, :addresses, style: "font-size:15px", class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <%= render 'order_summary' %>
+    
+    
+  <p>
+    <%= form.submit "Proceed to pay", class: "btn btn-primary" %>
+  </p>   
+</div>
+<% end %>

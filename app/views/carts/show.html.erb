@@ -46,7 +46,7 @@
 
 <% if @cart.carts_products != nil %>
   <div style="margin-top: 500px;">
-    <%= link_to 'check out', new_user_address_path(user_id: @user.id), class: "btn btn-info btn-lg"%>
+    <%= link_to 'check out', edit_user_path(user_id: @user.id), class: "btn btn-info btn-lg"%>
   </div>
 <% end %>
 

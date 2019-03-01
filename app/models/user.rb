@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :comments, dependent: :destroy
-  has_many :addresses, dependent: :destroy
+  has_many :addresses 
   has_one  :cart, dependent: :destroy
 
   accepts_nested_attributes_for :addresses, allow_destroy: true
@@ -48,6 +48,8 @@ class User < ApplicationRecord
       user = User.new(first_name: first_name,
         last_name: last_name,
         email: data['email'],
+        uid: access_token['uid'],
+        provider: access_token['provider'],
         password: Devise.friendly_token[0,20]
       )
       user.save(validate: false)

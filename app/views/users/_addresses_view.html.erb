@@ -1,0 +1,12 @@
+<% count = 1 %>
+<div>
+		<% @user.addresses.each do |address| %>
+	 Address-<%= count %>
+	<div>
+		<div><%= address.name %>  <span style="background-color: grey; padding: 1px; color: white;"><%= address.address_type %></span> <%= address.mobile %> </div>
+		<div><%= address.address%>, <%= address.city %>, <%= address.state %>, <%= address.pincode %></div>
+		<hr>
+	</div>
+	<% count += 1%>
+	<% end %>
+</div>
