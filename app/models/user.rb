@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :addresses 
   has_one  :cart, dependent: :destroy
+  has_one  :customer, dependent: :destroy
 
   accepts_nested_attributes_for :addresses, allow_destroy: true
 

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get 'products/userview', to: 'products#userview'
   get 'products/redirect_after_sign_in', to: 'products#redirect_after_sign_in'
   get 'products/check_role', to: 'products#check_role'
-  
+ 
+   
+  resources :charges 
   resources :carts, only: [:show] do
     collection do
       get :add_to_cart

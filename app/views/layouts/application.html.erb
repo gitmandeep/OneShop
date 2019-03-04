@@ -13,7 +13,7 @@
   <body>
     <div class="navbar navbar-default navbar-static-top">
       <div class="container">
-        <a class="navbar-brand" href="/">OneShop</a>
+        <a class="navbar-brand" href="/" style="color: aqua;"><b>OneShop</b></a>
         <div>
           <%= form_tag(products_path, :method => "get", id: "search-form", class: "nav navbar-nav") do %>
             <%= text_field_tag :search, params[:search], placeholder: "Search Products", class: "form-control", :style=> "margin-top: 7px; padding-right: 170px; margin-left: 50px;"%>
@@ -46,7 +46,7 @@
         <% end %>
       </div>
     </div>       
-    <div class="container">
+    <div class="container"> 
       <div class="row">
         <% if user_signed_in? && (current_user.role == "Admin") %>
           <div class="mg-top products-by-category">
