@@ -15,6 +15,11 @@ gem 'omniauth-google-oauth2'
 gem 'twitter-bootstrap-rails'
 gem 'kaminari'
 gem 'twilio-ruby'
+gem 'rails_admin', '~> 1.3'
+gem "bootstrap_form", ">= 4.1.0"
+gem "font-awesome-rails"
+
+
 
 # gem 'rails-js'
 

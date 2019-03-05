@@ -4,7 +4,25 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "One" %></title>
+    <title>
+      <%= content_for?(:title) ? yield(:title) : "One" %>
+    </title>
+    <script type="text/javascript">
+      // var add_address_button = document.getElementById("add_address");
+      // add_address_button.addEventListener("click", activateSearch);
+
+      // var search = function(){
+      // var input_field = document.getElementById("search_place");
+      // input_field.addEventListener("focus", activateSearch);
+      // }
+
+      function activateSearch(){
+        var input = document.getElementById("search_place");
+        var autocomplete = new google.maps.places.Autocomplete(input);
+      }
+    </script>
+    <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbrQjJqOS5glOpnQgk9GcR0ePvVHJes-8&libraries=places&callback=activateSearch"></script> -->
+    <!-- <script src="jquery.geocomplete.js"></script> -->
     <%= csrf_meta_tags %>
     
     <%= stylesheet_link_tag "application", :media => "all",'data-turbolinks-track' => true %>

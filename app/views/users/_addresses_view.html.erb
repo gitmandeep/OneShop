@@ -1,10 +1,11 @@
 <% count = 1 %>
 <div>
 		<% @user.addresses.each do |address| %>
+	<div id="address_<%= address.id%>">
 	 Address-<%= count %>
-	<div>
 		<div><%= address.name %>  <span style="background-color: grey; padding: 1px; color: white;"><%= address.address_type %></span> <%= address.mobile %> </div>
 		<div><%= address.address%>, <%= address.city %>, <%= address.state %>, <%= address.pincode %></div>
+		<%= link_to "Delete address", user_address_path(@user, address),:method => :delete, class: "btn btn-sm btn-danger", remote: true %>
 		<hr>
 	</div>
 	<% count += 1%>

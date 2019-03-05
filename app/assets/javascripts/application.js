@@ -18,3 +18,10 @@
 //= require turbolinks
 //= require cocoon
 //= require_tree .
+
+// var input_field = document.getElementById("search_place");
+// input_field.addEventListener("focus", activateSearch);
+// function activateSearch(){
+// 	var input = document.getElementById("search_place");
+// 	var autocomplete = new google.maps.places.Autocomplete(input);
+// }
