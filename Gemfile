@@ -15,6 +15,11 @@ gem 'omniauth-google-oauth2'
 gem 'twitter-bootstrap-rails'
 gem 'kaminari'
 gem 'twilio-ruby'
+gem 'rails_admin'
+gem 'bootstrap_form'
+gem 'stripe'
+gem 'flex-slider-rails'
+
 
 # gem 'rails-js'
 

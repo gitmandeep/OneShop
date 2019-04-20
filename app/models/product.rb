@@ -15,6 +15,14 @@ class Product < ApplicationRecord
   validates :price, numericality: { greater_than_or_equal_to: 1 }
   validate :white_list
 
+  # def to_param
+  #   name
+  # end
+  def to_param
+    "#{id}-#{name}".parameterize
+    #[id, name.parameterize].join("-")
+  end
+
   def white_list
   	pictures.each do |picture|
 	  	if !picture.content_type.in?(%w(image/jpeg image/png image/jpg))

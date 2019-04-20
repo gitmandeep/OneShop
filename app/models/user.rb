@@ -3,6 +3,10 @@ class User < ApplicationRecord
   has_many :addresses 
   has_one  :cart, dependent: :destroy
   has_one  :customer, dependent: :destroy
+  has_many :user_charges
+  has_many :orders
+  has_many :user_cards, dependent: :destroy
+  after_create :send_msg
 
   accepts_nested_attributes_for :addresses, allow_destroy: true
 
@@ -10,7 +14,7 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :dob, :email, :mobile, presence: true
   
   # after_create :assign_cart
-  after_create :send_msg, :send_mail
+  #after_create :send_msg, :send_mail
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable
@@ -65,7 +69,7 @@ class User < ApplicationRecord
   end
 
   def send_msg
-    #client = Twilio::REST::Client.new('ACb2ad07724169ab5a936792cab72db14c', 'c36f5a2288b4ff5bacce781ed0519d2f')
+    client = Twilio::REST::Client.new('ACb2ad07724169ab5a936792cab72db14c', 'c36f5a2288b4ff5bacce781ed0519d2f')
     $client.api.account.messages.create(
     from: '+18476968891',
     to: '+917987392544',

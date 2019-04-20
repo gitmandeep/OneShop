@@ -14,7 +14,6 @@ class CommentsController < ApplicationController
   def create
     @comment = @product.comments.build(comment_params)
     set_user
-    binding.pry
     if @comment.save
       #render 'new'
       # redirect_to product_url(@product)

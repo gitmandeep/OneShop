@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "One" %></title>
     <%= csrf_meta_tags %>
-    
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/navbar-fixed-side.css" rel="stylesheet" />
     <%= stylesheet_link_tag "application", :media => "all",'data-turbolinks-track' => true %>
     <%= javascript_include_tag "application",'data-turbolinks-track' => true %>
   </head>
   <body>
-    <div class="navbar navbar-default navbar-static-top">
+    <div class="navbar navbar-light bg-light navbar-static-top">
       <div class="container">
         <a class="navbar-brand" href="/" style="color: aqua;"><b>OneShop</b></a>
         <div>
@@ -20,6 +21,7 @@
             <%= submit_tag "Search", :name => nil, :style => "display: none;"%>
           <% end %>
         </div>
+          <%= link_to 'List', 'javascript:void(0);', class: "btn btn-sm btn-success cat-list-btn", id: "list-77", remote: true, "data-toggle" => "modal", "data-target" => "my-modal" %>
         <% if !current_user %>
           <ul class="nav navbar-nav navbar-right">
             <ul class="dropdown">
@@ -39,6 +41,9 @@
               <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                   <li><span ></span><%= link_to 'My profile', user_path(current_user.id) %> </li>
+                  <% if current_user.stripe_customer_id? %>
+                    <li><%= link_to 'My Payment History', payment_history_path(current_user.id) %></li> 
+                  <%end%>
                   <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>  
                 </ul>
             </ul>
@@ -53,16 +58,22 @@
             <strong>Welcome Admin</strong>
             <%= render '/products/category' %>
           </div>
-          <div class="col-lg-3">
-            <div class="well sidebar-nav ">
+          <div class="container-fluid">
+           <div class="row">
+
+          <div class="col-sm-3 col-lg-2">
+            <div class="navbar navbar-default navbar-fixed-side ">
               <ul class="nav nav-list">
                 <li class="nav-header"></li>
                 <li><%= link_to 'Home', products_url%></li>
                 <li><%= link_to 'Add New Product', new_product_path %></li>
                 <li><%= link_to 'List of Category', categories_path %></li>
+                <li><%= link_to 'List of Users', users_path %></li>
               </ul>
             </div>
           </div>
+        </div>
+      </div>
         <% elsif user_signed_in? && current_user.role != "Admin"%>
           <div class="mg-top products-by-category">
             <%= render '/products/category' %>
@@ -111,4 +122,14 @@
     </div> <!-- /container -->
     <div id="modal-window" class="modal fade" role="dialog"></div>
   </body>
+
+
+  <script type="text/javascript">
+  $('#list-77').mouseover(function(){
+    $.ajax({
+      type: 'GET',
+      url: '/categories/list_cat'
+    });
+  });
+</script>
 </html>

@@ -14,11 +14,8 @@
  *= require_self
  *= require rails_bootstrap_forms
  *= require font-awesome
-
- 
- 
- */
-
+ *= require flexslider
+*/
  label.required:after {
   content:" *";
 }
@@ -34,3 +31,29 @@
 .navbar-static-top{
   background-color: blue;  
 }
+
+.cat-list {
+     background-color: red;
+}
+.cat-list-btn{
+  margin-top: 9px;
+  margin-left: 238px; 
+}
+
+.list-88{
+  margin-top: 60px;
+  margin-left: 799px;
+}
+
+.login_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+

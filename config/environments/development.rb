@@ -4,6 +4,9 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+  ENV['PUBLISHABLE_KEY'] = "pk_test_Ygp9Q5OrdAeSKt6fWgHCZlgJ"
+  ENV['SECRET_KEY'] = "sk_test_5H1N3LApF4a0yw2c964OewXr"
+ 
   config.cache_classes = false
 
   # Do not eager load code on boot.

@@ -1,0 +1,18 @@
+<div class="modal-dialog modal-xm" style="background-color: white;">
+  <div class="modal-header">
+     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+     <h3 id="myModalLabel" ></h3>
+   </div>
+  <div class="modal-body col-sm-12">
+    <h2>Log in</h2>
+    <%= bootstrap_form_for(:user, as: :user, url: session_path(:user)) do |f| %> 
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.password_field :password, autocomplete: "current-password" %>
+      <%= f.submit "Log in", class: "btn btn-primary btn-xm" %> <button type="button" id="modal-signup" class="btn btn-primary btn-xm">Sign Up</button>    
+    <% end %>
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>

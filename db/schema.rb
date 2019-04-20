@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_19_132910) do
+ActiveRecord::Schema.define(version: 2019_04_16_114327) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -77,6 +77,26 @@ ActiveRecord::Schema.define(version: 2019_02_19_132910) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string "stripe_customer_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_customers_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "carts_product_id"
+    t.integer "order_amount"
+    t.integer "number_of_item"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["carts_product_id"], name: "index_orders_on_carts_product_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -86,6 +106,28 @@ ActiveRecord::Schema.define(version: 2019_02_19_132910) do
     t.datetime "updated_at", null: false
     t.integer "category_id"
     t.integer "number_of_units"
+  end
+
+  create_table "user_cards", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "user_card_id"
+    t.string "customer_id"
+    t.integer "card_exp_month"
+    t.integer "card_exp_year"
+    t.integer "card_last4"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_cards_on_user_id"
+  end
+
+  create_table "user_charges", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "stripe_charge_id"
+    t.integer "amount"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_charges_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,6 +146,8 @@ ActiveRecord::Schema.define(version: 2019_02_19_132910) do
     t.string "provider"
     t.string "uid"
     t.string "otp"
+    t.string "stripe_customer_id"
+    t.boolean "is_female", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

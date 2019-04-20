@@ -1,4 +1,4 @@
-<div class="col-sm-6">
+<div class="container col-sm-6">
 <h2>Log in</h2>
 <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   
@@ -12,8 +12,10 @@
 
   <% end -%>
 
-  <%= f.submit "Log in", class: "btn btn-primary btn-xm" %>
+  <%= f.submit "Log in", class: "btn btn-primary btn-xm login_btn" %>
     
 <% end %>
+<div>
 <%= render "devise/shared/links" %>
+</div>
 </div>

@@ -4,6 +4,10 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
+  def list_cat
+    @categories = Category.all
+  end
+
   def new
     @category = Category.new
   end

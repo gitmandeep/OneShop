@@ -17,10 +17,14 @@
   </div>
 
   <%= render 'order_summary' %>
-    
-    
+        
   <p>
-    <%= form.submit "Proceed to pay", class: "btn btn-primary" %>
+    <%= form.submit "Submit Address", class: "btn btn-primary" %>
   </p>   
 </div>
 <% end %>
+
+  <p>
+    <%= link_to "PAY", new_charge_path, class: "btn btn-primary" %>
+    <%= link_to "PAY With Save Cards", cards_list_charges_path, class: "btn btn-primary" %> 
+  </p>

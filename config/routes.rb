@@ -6,9 +6,16 @@ Rails.application.routes.draw do
   get 'products/userview', to: 'products#userview'
   get 'products/redirect_after_sign_in', to: 'products#redirect_after_sign_in'
   get 'products/check_role', to: 'products#check_role'
- 
-   
-  resources :charges 
+  get 'users/:id/payment_history' => 'users#payment_history', as: :payment_history
+  
+  
+  resources :charges do
+    collection do
+      get :cards_list
+    end
+  end
+  
+  resources :orders 
   resources :carts, only: [:show] do
     collection do
       get :add_to_cart
@@ -27,9 +34,13 @@ Rails.application.routes.draw do
 
   # resources :users, only: [:show]
 
-  resources :categories, except: [:edit, :update]
+  resources :categories, except: [:edit, :update] do
+    collection do
+      get :list_cat, as: :list_cat
+    end
+  end
   resources :users do
-    resources :addresses
+    resources :addresses 
   end
   root 'products#userview'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

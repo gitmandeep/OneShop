@@ -18,3 +18,8 @@
 //= require turbolinks
 //= require cocoon
 //= require_tree .
+//= require jquery.flexslider
+
+$(document).ready(function(){ 
+    $('.flexslider').flexslider();
+  });

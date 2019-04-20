@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+    
+</head>
+<body>
+  <center>
+    <h1> Payment History</h1>
+  </center>
+  <table class="table table-striped">
+
+    <thead>
+      <tr >
+        <th>Payment Number</th>
+        <th>Amount</th>
+        <th>Description</th>
+        <th>Payment Date</th>
+
+      </tr>
+    </thead>
+
+    <tbody class="user-listing">
+      <% @payment_history.each do |ph| %>
+        <tr>
+        <td><%= ph.stripe_charge_id %></td>
+        <td><%= ph.amount %></td>
+        <td><%= ph.description %></td>
+        <% date = ph.created_at %>
+        <td><%= date.to_time.strftime(' %b %d %Y %H:%M %Z ') %></td>
+          
+        
+       </tr>
+      <% end %>
+    </tbody>
+  </table>
+</body>
+</html>
