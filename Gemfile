@@ -19,6 +19,9 @@ gem 'rails_admin'
 gem 'bootstrap_form'
 gem 'stripe'
 gem 'flex-slider-rails'
+gem "font-awesome-rails"
+
+
 
 
 # gem 'rails-js'
