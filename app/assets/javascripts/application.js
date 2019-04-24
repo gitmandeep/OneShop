@@ -18,13 +18,11 @@
 //= require turbolinks
 //= require cocoon
 //= require_tree .
-<<<<<<< HEAD
 //= require jquery.flexslider
 
 $(document).ready(function(){ 
     $('.flexslider').flexslider();
   });
-=======
 
 // var input_field = document.getElementById("search_place");
 // input_field.addEventListener("focus", activateSearch);
@@ -32,4 +30,3 @@ $(document).ready(function(){
 // 	var input = document.getElementById("search_place");
 // 	var autocomplete = new google.maps.places.Autocomplete(input);
 // }
->>>>>>> 6a129e48d9c16b20090cf57adaf64f4f1389e488
